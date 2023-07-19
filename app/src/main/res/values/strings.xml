@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MyCompose</string>
+
+    <string-array name="home_items">
+        <item>Column</item>
+        <item>Row</item>
+        <item>Column, Row</item>
+        <item>Column, Row, Box</item>
+    </string-array>
+
+    <string name="home">Home</string>
+</resources>
