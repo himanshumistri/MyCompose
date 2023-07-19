@@ -1,4 +1,4 @@
-package com.himanshu.mycompose.ui.theme
+package com.himanshu.mycompose.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -14,8 +14,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarColors
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -29,7 +27,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.himanshu.mycompose.R
-import com.himanshu.mycompose.ui.theme.HomeScreen.TAG
+import com.himanshu.mycompose.ui.HomeScreen.TAG
+import com.himanshu.mycompose.ui.theme.MyComposeTheme
 
 
 object HomeScreen {
