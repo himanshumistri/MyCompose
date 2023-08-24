@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.himanshu.mycompose"
+    namespace = "com.himanshu.compose"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.himanshu.mycompose"
+        applicationId = "com.himanshu.compose"
         minSdk = 23
         targetSdk = 33
         versionCode = 1
