@@ -1,4 +1,4 @@
-package com.himanshu.mycompose.ui
+package com.himanshu.compose.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,9 +27,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.himanshu.mycompose.R
-import com.himanshu.mycompose.ui.HomeScreen.TAG
-import com.himanshu.mycompose.ui.theme.MyComposeTheme
+import androidx.navigation.NavHostController
+import com.himanshu.compose.R
+
+import com.himanshu.compose.ui.HomeScreen.TAG
+import com.himanshu.compose.ui.theme.MyComposeTheme
+import com.himanshu.data.Screen
+import com.himanshu.utility.LogcatManager
 
 
 object HomeScreen {
@@ -36,10 +41,11 @@ object HomeScreen {
     const val TAG="HomeScreen"
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun ShowHomeScreen(){
 
+@Composable
+fun ShowHomeScreen(navController: NavHostController) {
+
+    LogcatManager.v("App","Event:: ShowHomeScreen composed called")
     val resource =LocalContext.current.resources
 
      val itemList = remember {
@@ -56,6 +62,19 @@ fun ShowHomeScreen(){
         itemStateList.addAll(list)
     }
 
+    ShowHomeUI(itemStateList,navController)
+
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ShowHomeUI(itemStateList: SnapshotStateList<String>,navController: NavHostController) {
+
+    val navRouteIndex = remember {
+        hashMapOf(4 to Screen.LazyList.route)
+    }
+    LogcatManager.i("App","Event:: ShowHomeUI composed called")
+
     MyComposeTheme{
         Column (modifier = Modifier.fillMaxSize()){
             TopAppBar(title = { Text(text = stringResource(id = R.string.home),
@@ -67,22 +86,24 @@ fun ShowHomeScreen(){
                     .fillMaxWidth()
                     .padding(top = 10.dp),horizontalAlignment = Alignment.CenterHorizontally){
                 itemsIndexed(itemStateList){index,it->
-                    ListItem(it)
+                    ListItem(it,index){
+                        navRouteIndex[it]?.let {
+                            it1 -> navController.navigate(it1)
+                        }
+                    }
                     Spacer(modifier = Modifier.height(5.dp))
                 }
             }
         }
     }
-
 }
 
 
 @Composable
-fun ListItem(labelName: String){
+fun ListItem(labelName: String,itemIndex:Int,onClick:(clickIndex:Int)->Unit){
     Button(modifier = Modifier.fillMaxWidth(0.8F),onClick = {
-
+            onClick.invoke(itemIndex)
     }, elevation = ButtonDefaults.buttonElevation()) {
-
         Text(text = labelName, color = Color.White, style = MaterialTheme.typography.bodyMedium )
     }
 }
@@ -91,5 +112,5 @@ fun ListItem(labelName: String){
 @Preview
 @Composable
 fun ShowPreview(){
-    ShowHomeScreen()
+    //ShowHomeScreen(navController)
 }

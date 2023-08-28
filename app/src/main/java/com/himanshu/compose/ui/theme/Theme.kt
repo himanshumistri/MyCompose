@@ -1,4 +1,4 @@
-package com.himanshu.mycompose.ui.theme
+package com.himanshu.compose.ui.theme
 
 import android.app.Activity
 import android.os.Build

@@ -1,4 +1,4 @@
-package com.himanshu.mycompose
+package com.himanshu.compose
 
 import org.junit.Test
 

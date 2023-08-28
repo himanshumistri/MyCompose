@@ -1,4 +1,4 @@
-<resources>
+<resources  xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">MyCompose</string>
 
     <string-array name="home_items">
@@ -6,7 +6,13 @@
         <item>Row</item>
         <item>Column, Row</item>
         <item>Column, Row, Box</item>
+        <item>LazyColumn</item>
     </string-array>
 
     <string name="home">Home</string>
+    <string name="on" tools:override="true">ON</string>
+    <string name="off" tools:override="true">OFF</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+
 </resources>

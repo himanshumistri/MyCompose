@@ -3,5 +3,8 @@
 plugins {
     alias(libs.plugins.androidApplication) apply false
     alias(libs.plugins.kotlinAndroid) apply false
+    //build.gradle.kts (Kotlin)
+    alias(libs.plugins.org.jetbrains.kotlin.kapt) apply false
+    //id("com.google.devtools.ksp") version "1.8.10" apply false
 }
 true // Needed to make the Suppress annotation work for the plugins block
